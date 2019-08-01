@@ -28,9 +28,14 @@ def insert_book():
     books.insert_one(request.form.to_dict())
     return redirect(url_for('get_books'))
     
+@app.route('/edit_book/<book_id>')
+def edit_book(book_id):
+    the_book =  mongo.db.books.find_one({"_id": ObjectId(book_id)})
+    all_categories =  mongo.db.categories.find()
+    return render_template('editbook.html', book=the_book, categories=all_categories)
 
-
-
+   
+    
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
             port=int(os.environ.get('PORT')),
