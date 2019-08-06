@@ -9,9 +9,9 @@
       <option value="" disabled selected>Choose your Genre</option>
        {% for cat in categories %}
        {% if cat.category_name == book.category_name %}
-                     <option value="{{cat.book_genre}}" selected > {{cat.book_genre}}</option>
+                     <option value="{{cat.category_name}}" selected > {{cat.category_name}}</option>
                      {% else %}
-                     <option value="{{cat.book_genre}}"> {{cat.book_genre}}</option>
+                     <option value="{{cat.category_name}}"> {{cat.category_name}}</option>
                      {% endif %}
                   {% endfor %}
     </select>

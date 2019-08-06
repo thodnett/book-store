@@ -8,11 +8,11 @@
   {% for category in categories %}
   <div class="card blue-grey darken-1">
     <div class="card-content white-text">
-      <span class="card-title">{{category.book_genre}}</span>
+      <span class="card-title">{{category.category_name}}</span>
     </div>
     <div class="card-action col-sm4">
-      <a href="" class="waves-effect waves-light btn btn_small">Del</a>
-      <a href="" class="waves-effect waves-light btn btn_small blue">Edit</a>
+      <a href="" class="waves-effect waves-light btn btn_small">Delete</a>
+      <a href="{{url_for('edit_category', category_id=category._id)}}" class="waves-effect waves-light btn btn_small blue">Edit</a>
       </div>
   </div>
   {% endfor %}
