@@ -34,7 +34,30 @@ def edit_book(book_id):
     all_categories =  mongo.db.categories.find()
     return render_template('editbook.html', book=the_book, categories=all_categories)
 
-   
+@app.route('/update_book/<book_id>', methods=['POST'])
+def update_book(book_id):
+    books = mongo.db.books
+    books.update( {'_id': ObjectId(book_id)},
+    {
+        'book_name':request.form.get('book_name'),
+        'category_name':request.form.get('category_name'),
+        'book_author':request.form.get('book_author'),
+        'book_descrip':request.form.get('book_descrip'),
+        'book_review':request.form.get('book_review'),
+        'cover_link':request.form.get('cover_link'),
+        'purch_link':request.form.get('purch_link')
+    })
+    return redirect(url_for('get_books'))
+
+@app.route('/delete_book/<book_id>')
+def delete_book(book_id):
+    mongo.db.books.remove({'_id': ObjectId(book_id)})
+    return redirect(url_for('get_books'))
+    
+@app.route('/get_categories')
+def get_categories():
+    return render_template('categories.html', 
+    categories=mongo.db.categories.find())
     
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),

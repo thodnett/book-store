@@ -2,13 +2,17 @@
 
 <h3> Edit Book </h3>
 <div class="row">
-    <form action="{{ url_for('insert_book') }}" method="POST" class="col s12">
+   <form action="{{ url_for('update_book', book_id=book._id) }}" method="POST" class="col s12">
         <div class='row'>
             <div class="input-field col s12">
     <select>
       <option value="" disabled selected>Choose your Genre</option>
        {% for cat in categories %}
-                     <option value="{{cat.book_genre}}">{{cat.book_genre}}</option>
+       {% if cat.category_name == book.category_name %}
+                     <option value="{{cat.book_genre}}" selected > {{cat.book_genre}}</option>
+                     {% else %}
+                     <option value="{{cat.book_genre}}"> {{cat.book_genre}}</option>
+                     {% endif %}
                   {% endfor %}
     </select>
     <label>Select Genre</label>
@@ -17,46 +21,46 @@
         <div class="row">
             <div class="input-field col s12">
                 <i class="material-icons prefix">book</i>
-                <input id="book_name" name='book_name' type="text" class="validate">
+                <input id="book_name" name='book_name' type="text" class="validate" value="{{book.book_name}}">
                 <label for="book_name">Book Title</label>
             </div>
             <div class="row">
                 <div class="input-field col s12">
                     <i class="material-icons prefix">face</i>
-                    <input id="book_author" name="book_author" type="text" class="validate">
+                    <input id="book_author" name="book_author" type="text" class="validate" value="{{book.book_author}}">
                     <label for="book_author">Author</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s12">
                     <i class="material-icons prefix">description</i>
-                    <textarea id="book_descrip" name="book_descrip" class="validate"></textarea>
+                    <textarea id="book_descrip" name="book_descrip" class="validate">{{book.book_descrip}}</textarea>
                     <label for="book_descrip">Description</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s12">
                     <i class="material-icons prefix">rate_review</i>
-                    <textarea id="book_review" name="book_review" class="validate"></textarea>
+                    <textarea id="book_review" name="book_review" class="validate">{{book.book_review}}</textarea>
                     <label for="book_review">Review</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s12">
                     <i class="material-icons prefix">link</i>
-                    <input id="cover_link" name="cover_link" type="text" class="validate">
+                    <input id="cover_link" name="cover_link" type="text" class="validate" value="{{book.cover_link}}">
                     <label for="cover_link">Cover Link</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s12">
                     <i class="material-icons prefix">link</i>
-                    <input id="purch_link" name="purch_link" type="text" class="validate">
+                    <input id="purch_link" name="purch_link" type="text" class="validate" value="{{book.purch_link}}">
                     <label for="purch_link">Purchase Link</label>
                 </div>
             </div>
             <div class="row">
-                <button class="btn waves-effect waves-light" type="submit" name="action">Add Book
+                <button class="btn waves-effect waves-light" type="submit" name="action">Update 
                 <i class="material-icons right">playlist_add</i>
               </button>
         
