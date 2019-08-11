@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css?family=Prata&display=swap');
+
+
+/*----style navbar ----*/
+
+.nav-wrapper {
+    background-color: #555555;
+    font-family: 'Prata', sans-serif;
+    
+}
+
+/*--------card--------*/
+
+.card-content, .card-action a {
+    font-family: 'Prata', sans-serif;
+}
+
+/*-------headings-----*/
+
+.headings {
+    font-family: 'Prata', sans-serif;
+}
+
+.row a {
+     font-family: 'Prata', sans-serif;
+     color: orange;
+}
