@@ -68,7 +68,7 @@ def edit_category(category_id):
 def update_category(category_id):
     mongo.db.categories.update(
         {'_id': ObjectId(category_id)},
-        {'category_name': request.form.get('category_name')})
+        {'type': request.form.get('type')})
     return redirect(url_for('get_categories'))
     
 @app.route('/delete_category/<category_id>')
@@ -79,7 +79,7 @@ def delete_category(category_id):
 @app.route('/insert_category', methods=['POST'])
 def insert_category():
     categories = mongo.db.categories
-    category_doc ={'category_name': request.form.get('category_name')}
+    category_doc ={'type': request.form.get('type')}
     categories.insert_one(category_doc)
     return redirect(url_for('get_categories'))
     
@@ -88,13 +88,11 @@ def insert_category():
 def add_category():
     return render_template('addcategory.html')
     
-@app.route('/find_book')
-def find_book():
-    mongo.db.books.find({'category_name':'Thriller'})
-    return render_template('findbook.html')
+@app.route('/find_book/<type>')
+def find_book(type):
+     books=mongo.db.books.find({'category_name': type})
+     return render_template('findbook.html', books=books)
     
-
-
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
