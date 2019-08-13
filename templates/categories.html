@@ -11,14 +11,16 @@
       <span class="card-title">{{category.category_name}}</span>
     </div>
     <div class="card-action col-sm4">
-      <a href="{{url_for('delete_category', category_id=category._id)}} " class="waves-effect waves-light btn btn_small">Delete</a>
-      <a href="{{url_for('edit_category', category_id=category._id)}}" class="waves-effect waves-light btn btn_small blue">Edit</a>
+      <a href="{{url_for('delete_category', category_id=category._id)}} " class="waves-effect waves-light btn btn_small orange">Delete</a>
+      <a href="{{url_for('edit_category', category_id=category._id)}}" class="waves-effect waves-light btn btn_small orange">Edit</a>
+      <a href="{{url_for('find_book', book_id=book_id)}}" class="waves-effect waves-light btn btn_small orange">find</a>
       </div>
   </div>
   {% endfor %}
 </div>
 </div>
     <div class="row">
-       <a href="{{url_for('add_category')}}" class="waves-effect waves-light btn btn_small blue">Add Category</a>
+       <a href="{{url_for('add_category')}}" class="waves-effect waves-light btn btn_small orange">Add Genre
+       <i class="material-icons right">playlist_add</i></a>
     </div>
 {% endblock %}

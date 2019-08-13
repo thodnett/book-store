@@ -21,27 +21,14 @@
     font-family: 'Prata', sans-serif;
 }
 
-.row a {
-     font-family: 'Prata', sans-serif;
-     color: orange;
-}
+/*-----form------*/
 
 .form {
     font-family: 'Prata', sans-serif;
 }
 
-.label {
-    font-family: 'Prata', sans-serif;
+.form a {
+    color: white;
+    background-color: orange;
 }
 
-.input{
-    font-family: 'Prata', sans-serif;
-}
-
-.area {
-    font-family: 'Prata', sans-serif;
-}
-
-.option1 {
-    color: orange;
-}

@@ -17,7 +17,7 @@ mongo = PyMongo(app)
 @app.route('/get_books')
 def get_books():
     return render_template("books.html", books=mongo.db.books.find())
-    
+        
 @app.route('/add_book')
 def add_book():
     return render_template("addbook.html",  categories=mongo.db.categories.find())
@@ -83,9 +83,17 @@ def insert_category():
     categories.insert_one(category_doc)
     return redirect(url_for('get_categories'))
     
+    
 @app.route('/add_category')
 def add_category():
     return render_template('addcategory.html')
+    
+@app.route('/find_book')
+def find_book():
+    mongo.db.books.find({'category_name':'Thriller'})
+    return render_template('findbook.html')
+    
+
 
 
 if __name__ == '__main__':
