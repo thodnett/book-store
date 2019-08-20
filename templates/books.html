@@ -1,6 +1,15 @@
 {% extends 'base.html' %} {% block content %}
 
 <div class="row">
+ <div class="card hoverable grey darken-1">
+    <div class="card-content white-text">
+      <span class="card-title">About Us!</span>
+      <p>Find new books to read! Add and review books! Purchase the books you like. </p>
+    </div>
+</div>
+</div>
+
+<div class="row">
   {% for book in books %}
   <div class="card hoverable grey darken-1">
     <div class="card-content white-text">
@@ -8,7 +17,6 @@
       <p> <strong> {{book.category_name}}</strong> - {{book.book_descrip}} - {{book.book_review}} </p>
     </div>
     <div class="card-action col-sm4">
-      <a  href={{book.purch_link}}>Buy Me!</a>
       <a  href={{book.cover_link}}>Cover Image</a>
       <a  href="{{url_for('edit_book', book_id=book._id)}}">Edit</a>
       <a  href="{{url_for('delete_book', book_id=book._id)}}">Delete</a>

@@ -32,7 +32,10 @@
     background-color: orange;
 }
 
-.row-foot {
+/*-----footer------*/
+
+#page-footer {
      background-color: #555555;
      font-family: 'Prata', sans-serif;
+
 }
