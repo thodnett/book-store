@@ -7,8 +7,8 @@
             <div class="input-field col s12">
     <select id="select">
       <option value="" disabled selected>Choose your Genre</option>
-       {% for cat in categories %}
-                     <option value="{{cat.category_name}}">{{cat.category_name}}</option>
+       {% for category in categories %}
+                     <option value="{{category.type}}">{{category.type}}</option>
                   {% endfor %}
     </select>
     <label class="label">Select Genre</label>
