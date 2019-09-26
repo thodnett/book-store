@@ -32,6 +32,16 @@
     background-color: orange;
 }
 
+
+.reg {
+    margin: 50px;
+    padding: 25px;
+}
+
+.reg btn {
+    color: orange;
+}
+
 /*-----footer------*/
 
 #page-footer {

@@ -5,7 +5,7 @@
    
    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
-    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}" type="text/css"/>
+   <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}" type="text/css"/>
 </head>
 <body>
     <header>
@@ -14,17 +14,31 @@
                 <a href="{{url_for('get_books')}}" class="brand-logo">Book Store</a>
                 <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    {% if session.username %}
                     <li><a href="{{url_for('get_books')}}">Home</a></li>
                     <li><a href="{{url_for('add_book')}}">Add Book</a></li>
                     <li><a href="{{url_for('get_categories')}}">Genres</a></li>
+                     <li><a href="{{url_for('logout')}}">Logout</a></li>
+                     {% else %}
+                    <li><a href="{{url_for('login')}}">Login</a></li>
+                    <li><a href="{{url_for('register')}}">Register</a></li>
                 </ul>
+                {% endif %}
                 <ul class="side-nav" id="mobile-demo">
+                    {% if session.username %}
                     <li><a href="{{url_for('get_books')}}">Home</a></li>
                     <li><a href="{{url_for('add_book')}}">Add Book</a></li>
                     <li><a href="{{url_for('get_categories')}}">Genres</a></li>
+                     <li><a href="{{url_for('logout')}}">Logout</a></li>
+                     {% else %}
+                    <li><a href="{{url_for('login')}}">Login</a></li>
+                    <li><a href="{{url_for('register')}}">Register</a></li>
                 </ul>
             </div>
+                {% endif %}
+            
         </nav>
+        
     </header>
     <div class="container">
     {% block content %}
@@ -42,6 +56,7 @@ $(document).ready(function() {
 
 </script>
 
+{% if session.user %}
 <footer id="page-footer">
           <div class="container-foot">
             <div class="row-foot">
@@ -61,5 +76,7 @@ $(document).ready(function() {
             </div>
           </div>
         </footer>
+        
+{% endif %}
 </body>
 </html>
