@@ -5,7 +5,7 @@
     <form action="{{ url_for('insert_book') }}" method="POST" class="form col s12">
         <div class='row'>
             <div class="input-field col s12">
-    <select id="select">
+         <select id="category" name="category_name" >
       <option value="" disabled selected>Choose your Genre</option>
        {% for category in categories %}
                      <option value="{{category.type}}">{{category.type}}</option>

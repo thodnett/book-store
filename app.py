@@ -1,5 +1,5 @@
 import os
-from flask import Flask,  render_template, redirect, request, url_for, session
+from flask import Flask,  render_template, redirect, request, url_for, session, flash
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 
@@ -42,10 +42,13 @@ def register():
         if existing_user is None:
             users.insert({'name' : request.form['username']})
             session['username'] = request.form['username']
+            session.clear()
             return redirect(url_for('index'))
         
-        return 'That username already exists!'
-
+        
+        return redirect(url_for('register'))
+    
+    
     return render_template('register.html')
     
 @app.route('/logout')
@@ -101,19 +104,18 @@ def delete_book(book_id):
     
 @app.route('/get_categories')
 def get_categories():
-    if 'username' in session:
         return render_template('categories.html', 
         categories=mongo.db.categories.find())
     
 @app.route('/edit_category/<category_id>')
 def edit_category(category_id):
-    if 'user' in session:
+    if 'username' in session:
         return render_template('editcategory.html', 
         category=mongo.db.categories.find_one({'_id': ObjectId(category_id)}))
     
 @app.route('/update_category/<category_id>', methods=['POST'])
 def update_category(category_id):
-    if 'user' in session:
+     if 'username' in session:
             mongo.db.categories.update(
                 {'_id': ObjectId(category_id)},
                 {'type': request.form.get('type')})
@@ -121,13 +123,13 @@ def update_category(category_id):
     
 @app.route('/delete_category/<category_id>')
 def delete_category(category_id):
-    if 'user' in session:
+     if 'username' in session:
         mongo.db.categories.remove({'_id': ObjectId(category_id)})
         return redirect(url_for('get_categories'))
     
 @app.route('/insert_category', methods=['POST'])
 def insert_category():
-    if 'user' in session:
+     if 'username' in session:
         categories = mongo.db.categories
         category_doc ={'type': request.form.get('type')}
         categories.insert_one(category_doc)
@@ -136,12 +138,11 @@ def insert_category():
     
 @app.route('/add_category')
 def add_category():
-    if 'user' in session:
+    if 'username' in session:
         return render_template('addcategory.html')
     
 @app.route('/find_book/<type>')
 def find_book(type):
-    if 'user' in session:
         books=mongo.db.books.find({'category_name': type})
         return render_template('findbook.html', books=books)
     

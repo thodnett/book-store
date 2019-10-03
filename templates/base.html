@@ -4,8 +4,10 @@
 <head>
    
    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}" type="text/css"/>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+   <link rel="stylesheet" href="{{url_for('static', filename='css/form.css')}}" type="text/css"/>
+   <link rel="stylesheet" href="{{url_for('static', filename='css/books.css')}}" type="text/css"/>
 </head>
 <body>
     <header>
@@ -20,7 +22,6 @@
                     <li><a href="{{url_for('get_categories')}}">Genres</a></li>
                      <li><a href="{{url_for('logout')}}">Logout</a></li>
                      {% else %}
-                    <li><a href="{{url_for('login')}}">Login</a></li>
                     <li><a href="{{url_for('register')}}">Register</a></li>
                 </ul>
                 {% endif %}
@@ -31,7 +32,6 @@
                     <li><a href="{{url_for('get_categories')}}">Genres</a></li>
                      <li><a href="{{url_for('logout')}}">Logout</a></li>
                      {% else %}
-                    <li><a href="{{url_for('login')}}">Login</a></li>
                     <li><a href="{{url_for('register')}}">Register</a></li>
                 </ul>
             </div>
@@ -40,12 +40,14 @@
         </nav>
         
     </header>
+  
+	
     <div class="container">
     {% block content %}
     {% endblock %}
     </div>
 
-
+<script src="https://kit.fontawesome.com/b6aa2fb26d.js" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 <script type="text/javascript">
@@ -56,26 +58,37 @@ $(document).ready(function() {
 
 </script>
 
-{% if session.user %}
-<footer id="page-footer">
-          <div class="container-foot">
-            <div class="row-foot">
-              <div class="col l6 s12">
-                <h5 class="white-text">Do you want to buy a book?</h5>
-                <p class="grey-text text-lighten-4">Purchase all your favourite books through my link please!</p>
-              </div>
-              <div class="col l4 offset-l2 s12">
-                <h5 class="white-text">Links</h5>
-                <ul>
-                  <li><a class="grey-text text-lighten-3" href="https://www.amazon.co.uk/books-used-books-textbooks/b?ie=UTF8&node=266239">Affiliate Link</a></li>
-                  <li><a class="grey-text text-lighten-3" href="https://www.facebook.com/">Facebook</a></li>
-                  <li><a class="grey-text text-lighten-3" href="https://www.instagram.com/">Instagram</a></li>
-                  <li><a class="grey-text text-lighten-3" href="https://www.snapchat.com/">Snapchat</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </footer>
+{% if session.username %}
+<footer id="footer">
+			<div class="row pt-5">
+				<div class="col-12 center-align footer-links">
+					<a href="https://twitter.com/" target="_blank" class="rounded-circle">
+						<i class="fab fa-twitter fa-2x" aria-hidden="true"></i>
+					</a>
+					<a href="https://www.facebook.com/" target="_blank">
+						<i class="fab fa-facebook-f fa-2x" aria-hidden="true"></i>
+					</a>
+					<a href="https://www.linkedin.com/" target="_blank">
+						<i class="fab fa-linkedin-in fa-2x" aria-hidden="true"></i>
+					</a>
+					<a href="https://www.instagram.com/" target="_blank">
+						<i class="fab fa-instagram fa-2x" aria-hidden="true"></i>
+					</a>
+					<a href="https://www.amazon.com/books-used-books-textbooks/b?ie=UTF8&node=283155" target="_blank">
+						<i class="fas fa-store fa-2x" aria-hidden="true"></i>
+					</a>
+				</div>
+			</div>		
+			<div class="center-align">
+				<hr>
+				<div class="col-12">
+					<a href="https://www.linkedin.com/in/tania-hodnett-387340184/" target="_blank">
+						CREATED BY TANIA HODNETT
+					</a>
+				</div>
+			</div>
+			<br>
+		</footer>
         
 {% endif %}
 </body>

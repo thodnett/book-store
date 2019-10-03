@@ -9,44 +9,21 @@
     
 }
 
-/*--------card--------*/
-
-.card-content, .card-action a {
-    font-family: 'Prata', sans-serif;
-}
-
-/*-------headings-----*/
-
-.headings {
-    font-family: 'Prata', sans-serif;
-}
-
-/*-----form------*/
-
-.form {
-    font-family: 'Prata', sans-serif;
-}
-
-.form a {
-    color: white;
-    background-color: orange;
-}
-
-
-.reg {
-    margin: 50px;
-    padding: 25px;
-}
-
-.reg btn {
-    color: orange;
-}
 
 /*-----footer------*/
 
-#page-footer {
-     background-color: #555555;
-     font-family: 'Prata', sans-serif;
-
+#footer {
+    background-color: #555555;
+    font-family: 'Prata', sans-serif;
+    padding: 10em;
 }
 
+#footer a {
+    margin: 0px 15px;
+    color: orange;
+}
+
+#footer hr {
+    width: 50%;
+    border-top: 1px solid #ffffff;
+}

@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css?family=Prata&display=swap');
+
+
+/*--------card--------*/
+
+.card-content, .card-action a {
+    font-family: 'Prata', sans-serif;
+}
+
+/*-------headings-----*/
+
+.headings {
+    font-family: 'Prata', sans-serif;
+}
