@@ -5,15 +5,15 @@
 
 
 <div class="row">
-  {% for cat in categories %}
+  {% for category in categories %}
   <div class="card grey darken-1">
     <div class="card-content white-text">
-      <span class="card-title">{{cat.type}}</span>
+      <span class="card-title">{{category.type}}</span>
     </div>
     <div class="card-action col-sm4">
       <a href="{{url_for('delete_category', category_id=category._id)}} " class="waves-effect waves-light btn btn_small orange">Delete</a>
       <a href="{{url_for('edit_category', category_id=category._id)}}" class="waves-effect waves-light btn btn_small orange">Edit</a>
-      <a href="{{url_for('find_book', type=cat.type)}}" class="waves-effect waves-light btn btn_small orange">find</a>
+      <a href="{{url_for('find_book', type=category.type)}}" class="waves-effect waves-light btn btn_small orange">find</a>
       </div>
   </div>
   {% endfor %}
