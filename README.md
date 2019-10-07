@@ -8,10 +8,12 @@ UX
 ------------------------------------------------------------------------------
 
 I created the website for the users to be able to find and review and purchase 
-books they are interested in. 
+books they are interested in. The user can create a book review for others to see 
+and can view other users reviews. They can then 
 
 Features
 -----------------------------------------------------------------------------
+* Login to site to use. 
 * Fixed navbar for easy navigation of the site.
 * Ability to add and edit books.
 * Add and edit different genres, also search for books based on genre.
@@ -25,6 +27,9 @@ Technologies used
 * Python 3 - used to script the functionality of the app.
 * MongoDb - used for the database of books.
 * Heroku - for launching and running the app.
+* HTML 
+* Css
+* 
 
 Testing
 -------------------------------------------------------------------------------

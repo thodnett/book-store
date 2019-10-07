@@ -1,5 +1,5 @@
 import os
-from flask import Flask,  render_template, redirect, request, url_for, session, flash
+from flask import Flask,  render_template, redirect, request, url_for, session
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 
@@ -59,7 +59,8 @@ def logout():
     
 @app.route('/get_books')
 def get_books():
-    return render_template("books.html", books=mongo.db.books.find())
+   if 'username' in session:
+        return render_template("books.html", books=mongo.db.books.find())
         
 @app.route('/add_book')
 def add_book():
@@ -104,6 +105,7 @@ def delete_book(book_id):
     
 @app.route('/get_categories')
 def get_categories():
+    if 'username' in session:
         return render_template('categories.html', 
         categories=mongo.db.categories.find())
     
@@ -143,6 +145,7 @@ def add_category():
     
 @app.route('/find_book/<type>')
 def find_book(type):
+    if 'username' in session:
         books=mongo.db.books.find({'category_name': type})
         return render_template('findbook.html', books=books)
     
